@@ -170,7 +170,7 @@ class SynthesizerTrn(nn.Module):
 
         # f0 predict
         lf0 = 2595.0 * torch.log10(1.0 + f0.unsqueeze(1) / 700.0) / 500
-        norm_lf0 = so_vits_svc_fork.f0.normalize_f0(lf0, x_mask, uv)
+        norm_lf0 = so_vits_svc_fork_ermis.f0.normalize_f0(lf0, x_mask, uv)
         pred_lf0 = self.f0_decoder(x, norm_lf0, x_mask, spk_emb=g)
 
         # encoder
@@ -207,7 +207,7 @@ class SynthesizerTrn(nn.Module):
 
         if predict_f0:
             lf0 = 2595.0 * torch.log10(1.0 + f0.unsqueeze(1) / 700.0) / 500
-            norm_lf0 = so_vits_svc_fork.f0.normalize_f0(lf0, x_mask, uv, random_scale=False)
+            norm_lf0 = so_vits_svc_fork_ermis.f0.normalize_f0(lf0, x_mask, uv, random_scale=False)
             pred_lf0 = self.f0_decoder(x, norm_lf0, x_mask, spk_emb=g)
             f0 = (700 * (torch.pow(10, pred_lf0 * 500 / 2595) - 1)).squeeze(1)
 
