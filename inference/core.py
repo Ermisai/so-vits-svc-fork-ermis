@@ -12,8 +12,8 @@ import torch
 from cm_time import timer
 from numpy import dtype, float32, ndarray
 
-import so_vits_svc_fork_ermis_ermis.f0
-from so_vits_svc_fork_ermis_ermis import utils
+import so_vits_svc_fork_ermis.f0
+from so_vits_svc_fork_ermis import utils
 
 from ..modules.synthesizers import SynthesizerTrn
 from ..utils import get_optimal_device
